@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key});
+  final String title;
+  final bool centre;
+  const CustomAppBar({super.key, required this.title, this.centre = true});
 
   @override
   Widget build(BuildContext context) {
@@ -12,19 +14,20 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       toolbarHeight: 90,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(20),
-          bottomRight: Radius.circular(20),
-        ),
+            bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
       ),
       iconTheme: const IconThemeData(color: Colors.black),
-      title: const Row(
-        children: [
-          SizedBox(width: 75),
-          Icon(Icons.flight_takeoff_outlined, color: Color(0xffFF7610)),
-          SizedBox(width: 10),
-          Text("Flight", style: TextStyle(color: Colors.black)),
-        ],
-      ),
+      title: centre
+          ? Row(
+              children: [
+                const SizedBox(width: 75),
+                const Icon(Icons.flight_takeoff_outlined,
+                    color: Color(0xffFF7610)),
+                const SizedBox(width: 10),
+                Text(title, style: const TextStyle(color: Colors.black)),
+              ],
+            )
+          : Text(title, style: const TextStyle(color: Colors.black)),
     );
   }
 

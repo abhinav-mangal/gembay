@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gembay/screen/flightSearch/flight_search_page.dart';
 import 'package:gembay/widget/app_bar.dart';
 import 'package:gembay/widget/custom_button.dart';
+import 'package:gembay/widget/search_bar.dart';
 import 'package:gembay/widget/separator.dart';
 
 class HomePage extends StatelessWidget {
@@ -16,7 +17,7 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              const CustomSearchBar(),
+              const CustomSearchBar(text: 'Search'),
               const SizedBox(height: 20),
               CategoryRow(),
               const SizedBox(height: 20),
@@ -475,7 +476,6 @@ class FlightCard extends StatelessWidget {
     );
   }
 }
-
 
 class BusTicketCard extends StatelessWidget {
   const BusTicketCard({super.key});
@@ -1090,29 +1090,6 @@ class CategoryRow extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class CustomSearchBar extends StatelessWidget {
-  const CustomSearchBar({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SearchBar(
-      hintText: 'Search',
-      hintStyle: const MaterialStatePropertyAll(
-          TextStyle(color: Color(0xff686868), fontWeight: FontWeight.w400)),
-      leading: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 6),
-        child: Image.asset('assets/search.png', scale: 3.5),
-      ),
-      elevation: const MaterialStatePropertyAll(2.5),
-      backgroundColor: const MaterialStatePropertyAll(Colors.white),
-      shape: const MaterialStatePropertyAll(RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)))),
     );
   }
 }

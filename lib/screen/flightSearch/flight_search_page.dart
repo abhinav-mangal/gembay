@@ -1,8 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:gembay/screen/flightSearch/select_departure.dart';
 import 'package:gembay/widget/app_bar_2.dart';
+import 'package:gembay/widget/calendar.dart';
 import 'package:gembay/widget/custom_button.dart';
 import 'package:gembay/widget/separator.dart';
+import 'package:gembay/widget/travel_selector.dart';
 
 class FlightBookingPage extends StatefulWidget {
   const FlightBookingPage({super.key});
@@ -26,7 +29,7 @@ class _FlightBookingPageState extends State<FlightBookingPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar: const CustomAppBar(title: "Flights"),
       body: Column(
         children: [
           Padding(
@@ -153,6 +156,9 @@ class _FlightBookingPageState extends State<FlightBookingPage>
         Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
         const SizedBox(height: 8.0),
         TextFormField(
+          onTap: () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const SelectDeparture())),
+          readOnly: true,
           initialValue: value,
           decoration: InputDecoration(
             prefixIcon: Icon(
@@ -174,6 +180,13 @@ class _FlightBookingPageState extends State<FlightBookingPage>
         Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
         const SizedBox(height: 8.0),
         TextFormField(
+          onTap: () => showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              scrollControlDisabledMaxHeightRatio: 0.5,
+              builder: (BuildContext context) => const CalendarBottomSheet()),
+          readOnly: true,
           initialValue: value,
           decoration: const InputDecoration(
             prefixIcon:
@@ -192,6 +205,13 @@ class _FlightBookingPageState extends State<FlightBookingPage>
         Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
         const SizedBox(height: 8.0),
         TextFormField(
+          onTap: () => showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              scrollControlDisabledMaxHeightRatio: 0.5,
+              builder: (BuildContext context) => const TravelerClassSelector()),
+          readOnly: true,
           initialValue: value,
           decoration: const InputDecoration(
             prefixIcon: Icon(Icons.person_2_outlined, color: Color(0xffFF7610)),
