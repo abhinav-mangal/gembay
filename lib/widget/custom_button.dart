@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gembay/screen/flightListing/flight_listing.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -7,7 +8,8 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () => Navigator.push(context,
+          MaterialPageRoute(builder: (_) => const FlightListingPage())),
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.black,
         shape: const StadiumBorder(),

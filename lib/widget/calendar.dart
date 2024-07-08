@@ -26,7 +26,7 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
     };
   }
 
-  List<dynamic> _getEventsForDay(DateTime day) {
+  List<dynamic> getEventsForDay(DateTime day) {
     return _events[day] ?? [];
   }
 
